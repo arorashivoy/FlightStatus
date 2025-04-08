@@ -42,4 +42,4 @@ This Android application provides real-time flight tracking using the AviationSt
 
 ## API Key
 
-The API key for the AviationStack service is hardcoded for development use:
+The API key for the AviationStack service is hardcoded for development use

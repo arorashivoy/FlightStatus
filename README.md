@@ -40,6 +40,19 @@ This Android application provides real-time flight tracking using the AviationSt
 5. Average flight duration (in minutes) is calculated and shown.
 6. Background data sync occurs every 15 minutes using WorkManager.
 
-## API Key
+## Building it
 
-The API key for the AviationStack service is hardcoded for development use
+You need your own [AviationStack](https://aviationstack.com) API key; the free tier
+is enough. It is read from `local.properties`, which is not committed:
+
+```sh
+cp local.properties.example local.properties
+# then put your key in it:
+#   AVIATIONSTACK_API_KEY=your-key-here
+./gradlew installDebug
+```
+
+Gradle exposes it to the app as `BuildConfig.AVIATIONSTACK_API_KEY`.
+
+An earlier version of this repository hardcoded a key in the Kotlin source. That
+key has been rotated and is no longer valid.

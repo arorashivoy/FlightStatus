@@ -1,5 +1,7 @@
 package com.arorashivoy.flights
 
+import com.arorashivoy.flights.BuildConfig
+
 import android.app.Application
 import android.content.Context
 import android.os.Bundle
@@ -92,7 +94,7 @@ class App : Application() {
 
 object FlightRepository {
     private val client = OkHttpClient()
-    private const val API_KEY = "2f881cafd368db1aa8f68b8eb2fc04fc"
+    private val API_KEY = BuildConfig.AVIATIONSTACK_API_KEY
 
     suspend fun fetchFlightData(depIATA: String, arrIATA: String) : List<Flight> {
         val url = "https://api.aviationstack.com/v1/flights?access_key=$API_KEY&dep_iata=$depIATA&arr_iata=$arrIATA"

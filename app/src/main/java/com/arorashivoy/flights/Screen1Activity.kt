@@ -1,5 +1,7 @@
 package com.arorashivoy.flights
 
+import com.arorashivoy.flights.BuildConfig
+
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -25,7 +27,7 @@ class Screen1Activity : AppCompatActivity() {
     private val client = OkHttpClient()
     private val handler = Handler(Looper.getMainLooper())
     private var trackingRunnable: Runnable? = null
-    private val API_KEY = "2f881cafd368db1aa8f68b8eb2fc04fc"
+    private val API_KEY = BuildConfig.AVIATIONSTACK_API_KEY
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.devtools.ksp)
     alias(libs.plugins.android.application)
@@ -9,6 +11,17 @@ android {
     compileSdk = 35
 
     defaultConfig {
+        // AVIATIONSTACK_API_KEY lives in local.properties, which is not committed.
+        val localProps = Properties().apply {
+            val f = rootProject.file("local.properties")
+            if (f.exists()) f.inputStream().use { load(it) }
+        }
+        buildConfigField(
+            "String",
+            "AVIATIONSTACK_API_KEY",
+            "\"${localProps.getProperty("AVIATIONSTACK_API_KEY") ?: ""}\""
+        )
+
         applicationId = "com.arorashivoy.flights"
         minSdk = 28
         targetSdk = 35
@@ -16,6 +29,10 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildFeatures {
+        buildConfig = true
     }
 
     buildTypes {
